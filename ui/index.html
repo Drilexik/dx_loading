@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="ui/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src="../img/logo/logo.png" class="server-logo" alt="Logo">
+
+    <div id="slideshow">
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img1.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img2.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img3.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img4.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img5.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img6.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img7.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img8.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img9.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/img10.jpg');"></div>
+    </div>
+
+    <div class="bottom-ui">
+        <div class="glass-panel">
+            <div class="info-text">
+                <span class="status-dot"></span>
+                <p id="loading-status">Loading server assets...</p>
+            </div>
+
+            <div class="controls">
+                <div class="key-hint"><span>SPACE</span> Play/Pause</div>
+                <div class="key-hint"><span>↑ ↓</span> <span id="volume-text">Volume: 50%</span></div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" src="../music.mp3" autoplay loop></audio>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const volText = document.getElementById('volume-text');
+        music.volume = 0.5;
+
+        window.addEventListener('keydown', function(e) {
+            if (e.key === " ") {
+                if (music.paused) music.play(); else music.pause();
+            }
+            if (e.key === "ArrowUp") {
+                music.volume = Math.min(1, music.volume + 0.05);
+                updateVol();
+            }
+            if (e.key === "ArrowDown") {
+                music.volume = Math.max(0, music.volume - 0.05);
+                updateVol();
+            }
+        });
+
+        function updateVol() {
+            volText.innerText = "Volume: " + Math.round(music.volume * 100) + "%";
+        }
+
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].style.opacity = 0;
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.opacity = 1;
+        }, 6000);
+    </script>
+</body>
+</html>
