@@ -1,4 +1,5 @@
 # FiveM Loading Screen
+![Preview](preview.png)
 Minimalistic UI with slideshow, logo & music.
 
 ## 🚀 Features

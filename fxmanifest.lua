@@ -11,9 +11,9 @@ loadscreen_manual_shutdown "yes"
 files {
     'ui/index.html',
     'ui/style.css',
-    'music.mp3',
-    'img/logo/logo.png',
-    'img/img*.jpg'
+    'ui/img/logo/logo.png',
+    'ui/img/img*.jpg',
+    'music.mp3'
 }
 
 client_script 'client/client.lua'
