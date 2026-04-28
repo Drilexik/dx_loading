@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'Drilexik'
-version '1.0.0'
+version '1.0'
 description 'A custom loading screen for FiveM servers.'
 
 loadscreen 'ui/index.html'
